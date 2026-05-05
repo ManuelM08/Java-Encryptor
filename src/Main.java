@@ -23,7 +23,13 @@ public class Main {
                     "5. work in progress \n");
 
             while (resp > 5 || resp < 0) {
-                resp = sc.nextInt();
+                try {
+                    String input = sc.nextLine();
+                    resp = Integer.parseInt(input);
+                } catch (NumberFormatException e) {
+                    System.out.println("Please enter a valid number (0-5)");
+                    resp = -1;
+                }
             }
 
             //---------------------------------------Switch--------------------------------------
@@ -39,8 +45,9 @@ public class Main {
                 break;
 
                 case 1:
-                    String msg = sc.next();
-                    System.out.println(k.generateNewMessage(msg));
+                    System.out.println("Enter a message : ");
+                    String msg = sc.nextLine();
+                    System.out.println("Encrypted message : " + k.generateNewMessage(msg));
                 break;
 
             }
